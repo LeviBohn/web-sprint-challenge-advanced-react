@@ -14,6 +14,15 @@ const initialState = {
 }
 
 export default class AppClass extends React.Component {
+  constructor(props) {
+    super(props);
+      this.state = {
+        message: initialMessage,
+        email: initialEmail,
+        index: initialIndex,
+        steps: initialSteps,
+      };
+  }
   // THE FOLLOWING HELPERS ARE JUST RECOMMENDATIONS.
   // You can delete them and build your own logic from scratch.
 
