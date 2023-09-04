@@ -16,12 +16,7 @@ const initialState = {
 export default class AppClass extends React.Component {
   constructor(props) {
     super(props);
-      this.state = {
-        message: initialMessage,
-        email: initialEmail,
-        index: initialIndex,
-        steps: initialSteps,
-      };
+      this.state = { initialState };
   }
   // THE FOLLOWING HELPERS ARE JUST RECOMMENDATIONS.
   // You can delete them and build your own logic from scratch.
@@ -47,7 +42,14 @@ export default class AppClass extends React.Component {
     // this helper should return the current index unchanged.
   }
 
-  move = (evt) => {
+  move = (direction) => {
+    const newIndex = this.getNextIndex(direction);
+    if (newIndex !== this.state.index) {
+      this.setState({
+        index: newIndex,
+        steps: this.state.steps + 1,
+      });
+    }
     // This event handler can use the helper above to obtain a new index for the "B",
     // and change any states accordingly.
   }
