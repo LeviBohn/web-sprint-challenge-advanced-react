@@ -84,16 +84,16 @@ export default class AppClass extends React.Component {
     } else {
       switch (direction) {
         case 'up':
-          this.setState({ message: "you can't go up" });
+          this.setState({ message: "You can't go up" });
           break;
         case 'down':
-          this.setState({ message: "you can't go down" });
+          this.setState({ message: "You can't go down" });
           break;
         case 'right':
-          this.setState({ message: "you can't go right" });
+          this.setState({ message: "You can't go right" });
           break;
         case 'left':
-          this.setState({ message: "you can't go left" });
+          this.setState({ message: "You can't go left" });
           break;
         default:
           this.setState({ message: '' });
