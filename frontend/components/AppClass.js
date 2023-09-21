@@ -56,7 +56,7 @@ export default class AppClass extends React.Component {
     } else {
       y = 3;
     }
-    return `${x},${y}`;
+    return `(${x},${y})`;
     // It it not necessary to have a state to track the coordinates.
     // It's enough to know what index the "B" is at, to be able to calculate them.
   }
@@ -123,14 +123,14 @@ export default class AppClass extends React.Component {
       <div id="wrapper" className={ className }>
 
         <div className="info">
-          <h3 id="coordinates">Coordinates ({this.getXY()}) </h3>
-          <h3 id="steps">You moved { this.state.steps } times</h3>
+          <h3 id="coordinates">Coordinates {this.getXY()} </h3>
+          <h3 id="steps">You moved { this.state.steps } {`${this.state.steps === 1 ? 'time' : 'times'}`}</h3>
         </div>
 
         <div id="grid">
           {
             [0, 1, 2, 3, 4, 5, 6, 7, 8].map(idx => (
-              <div key={idx} className={`square ${idx === this.state.index ? ' active' : ''}`}>
+              <div key={idx} className={`square ${idx === this.state.index ? 'active' : ''}`}>
                 {idx === this.state.index ? 'B' : null}
               </div>
             ))
@@ -138,15 +138,15 @@ export default class AppClass extends React.Component {
         </div>
 
         <div className="info">
-          <h3 id="message"> { this.state.message } </h3>
+          <h3 id="message">{this.state.message}</h3>
         </div>
 
         <div id="keypad">
-          <button id="left"   onClick={() => this.move('left')}    >LEFT</button>
-          <button id="up"     onClick={() => this.move('up')}      >UP</button>
-          <button id="right"  onClick={() => this.move('right')}   >RIGHT</button>
-          <button id="down"   onClick={() => this.move('down')}    >DOWN</button>
-          <button id="reset"  onClick={() => this.reset()}         >reset</button>
+          <button id="left" onClick={() => this.move('left')}>LEFT</button>
+          <button id="up" onClick={() => this.move('up')}>UP</button>
+          <button id="right" onClick={() => this.move('right')}>RIGHT</button>
+          <button id="down" onClick={() => this.move('down')}>DOWN</button>
+          <button id="reset" onClick={() => this.reset()}>reset</button>
         </div>
 
         <form>
