@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 // Suggested initial states
 const initialMessage = ''
@@ -113,7 +114,23 @@ export default class AppClass extends React.Component {
 
   onSubmit = evt => {
     evt.preventDefault();
-    
+    const [x,y] = this.getXY()
+    const {email, steps} = this.state
+    let message = null
+    axios.post('http://localhost:9000/api/result', { "x": x, "y": y, "steps": steps, "email": email } )
+    .then(res => {
+      message = res.data.message
+    })
+    .catch(err => {
+      message = err.response.data.message
+    })
+    .finally(() => {
+      this.setState({
+        ...this.state,
+        message,
+        email: initialEmail,
+      })
+    })
     // Use a POST request to send a payload to the server.
   }
 
@@ -149,9 +166,9 @@ export default class AppClass extends React.Component {
           <button id="reset"  onClick={() => this.reset()}>       reset</button>
         </div>
 
-        <form>
+        <form onSubmit={this.onSubmit}>
           <input id="email" type="email" placeholder="type email"></input>
-          <input id="submit" type="submit" onClick={() => this.onSubmit()}></input>
+          <input id="submit" type="submit" ></input>
         </form>
 
       </div>
