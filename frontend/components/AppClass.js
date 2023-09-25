@@ -109,11 +109,9 @@ export default class AppClass extends React.Component {
     // You will need this to update the value of the input.
   }
 
-  onSubmit = (evt) => {
+  onSubmit = evt => {
     evt.preventDefault();
-    const formData = {
-      email: this.state.email,
-    };
+    
     // Use a POST request to send a payload to the server.
   }
 
@@ -123,7 +121,7 @@ export default class AppClass extends React.Component {
       <div id="wrapper" className={ className }>
 
         <div className="info">
-          <h3 id="coordinates">Coordinates {this.getXY()} </h3>
+          <h3 id="coordinates">Coordinates {this.getXY()}</h3>
           <h3 id="steps">You moved { this.state.steps } {`${this.state.steps === 1 ? 'time' : 'times'}`}</h3>
         </div>
 
@@ -142,16 +140,16 @@ export default class AppClass extends React.Component {
         </div>
 
         <div id="keypad">
-          <button id="left" onClick={() => this.move('left')}>LEFT</button>
-          <button id="up" onClick={() => this.move('up')}>UP</button>
-          <button id="right" onClick={() => this.move('right')}>RIGHT</button>
-          <button id="down" onClick={() => this.move('down')}>DOWN</button>
-          <button id="reset" onClick={() => this.reset()}>reset</button>
+          <button id="left"   onClick={() => this.move('left')}>  LEFT</button>
+          <button id="up"     onClick={() => this.move('up')}>    UP</button>
+          <button id="right"  onClick={() => this.move('right')}> RIGHT</button>
+          <button id="down"   onClick={() => this.move('down')}>  DOWN</button>
+          <button id="reset"  onClick={() => this.reset()}>       reset</button>
         </div>
 
         <form>
           <input id="email" type="email" placeholder="type email"></input>
-          <input id="submit" type="submit"></input>
+          <input id="submit" type="submit" onClick={() => this.onSubmit()}></input>
         </form>
 
       </div>
